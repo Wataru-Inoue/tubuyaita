@@ -17,6 +17,9 @@ class TweetsController < ApplicationController
   end
 
   def update
+    @tweet = Tweet.find(params[:id])
+    @tweet.update(tweet_params)
+    redirect_to tweets_path
   end
   
   def destroy
