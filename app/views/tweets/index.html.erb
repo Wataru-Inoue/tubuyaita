@@ -1,0 +1,6 @@
+<h1>Tweetの一覧</h1>
+<% tweets.each do |tweet| %>
+  <p>Tweet:<%= tweet.content %></p>
+<% end %>
+
+<%= link_to "投稿", new_tweet_path %>
