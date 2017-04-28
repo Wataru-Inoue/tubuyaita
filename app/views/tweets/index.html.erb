@@ -1,5 +1,5 @@
 <h1>Tweetの一覧</h1>
-<% tweets.each do |tweet| %>
+<% @tweets.each do |tweet| %>
   <p>Tweet:<%= tweet.content %></p>
   <%= link_to "編集", edit_tweet_path(tweet.id) %>
   <%= link_to "削除", tweet_path(tweet.id),method: :delete, data: {confirm: '本当に削除していいですか？'} %>
