@@ -1,12 +1,16 @@
 class TweetsController < ApplicationController
-  before_action :set_blog, only: [:edit, :update, :destroy ]
+  before_action :set_tweet, only: [:edit, :update, :destroy ]
   
   def index
     @tweets = Tweet.all
   end
   
   def new
-    @tweet =Tweet.new
+    if params[:back]
+      @tweet =Tweet.new(tweets_params)
+    else  
+      @tweet =Tweet.new
+    end
   end
   
   def create
@@ -22,8 +26,11 @@ class TweetsController < ApplicationController
   end
 
   def update
-    @tweet.update(tweet_params)
-    redirect_to tweets_path, notice:"つぶやきを編集しました！"
+    if @tweet.update(tweets_params)
+      redirect_to tweets_path, notice:"つぶやきを編集しました！"
+    else
+      render 'edit'
+    end
   end
   
   def destroy
@@ -33,6 +40,7 @@ class TweetsController < ApplicationController
   
   def confirm
     @tweet = Tweet.new(tweets_params)
+    render :new if @tweet.invalid?
   end
   
   private

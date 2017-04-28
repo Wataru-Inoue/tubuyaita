@@ -7,7 +7,7 @@
 
 <% end %>
 
-<%= form_for(@tweet, url: new_blog_path, method: 'get' ) do |f| %>
+<%= form_for(@tweet, url: new_tweet_path, method: 'get' ) do |f| %>
   <%= f.hidden_field :content %>
   <%= f.submit "戻る", name: 'back' %>
 <% end %>
