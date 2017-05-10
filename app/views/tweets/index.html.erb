@@ -1,8 +1,21 @@
-<h1>つぶやき一覧</h1>
-<% @tweets.each do |tweet| %>
-  <p>つぶやき:<%= tweet.content %></p>
-  <%= link_to "編集", edit_tweet_path(tweet.id) %>
-  <%= link_to "削除", tweet_path(tweet.id),method: :delete, data: {confirm: '本当に削除していいですか？'} %>
-<% end %>
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <h1 class="nikukyu">ツブヤキリスト</h1>
+      <%= link_to "新規投稿", new_tweet_path, class: "btn btn-default" %>
+        <% @tweets.each do |tweet| %>
+          <div class="row row-eq-heigt clearfix">
+              <div class="icon pull-left">
+                <img src="<%= asset_path "tw.png" %>">
+              </div>
+              <div class="botan pull-right">
+                <%= link_to "編集", edit_tweet_path(tweet.id), class: 'btn btn-default btn-sm btn-success' %>
+                <%= link_to "削除", tweet_path(tweet.id),method: :delete, data: {confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn-danger' %>
+              </div>
+              <div class="tweet">
+                <p><%= tweet.content %></p>
+              </div>
+          </div>
+        <% end %>
+  </div>
+</div>
 
-<%= link_to "新規投稿", new_tweet_path %>

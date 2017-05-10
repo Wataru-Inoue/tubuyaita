@@ -5,10 +5,29 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/earlyaccess/nikukyu.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
-<body>
+<body class='<%= "#{controller.controller_name}" %>'>
+  
+  <header>
+    <ul>
+      <li><%= link_to "Tubuyaita",root_path %></li>
+      <li><%= link_to "トップページ",root_path %></li>
+      <li><%= link_to "つぶやく",tweets_path %></li>
+    </ul>  
+  </header>
+   
+  <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+  <% end %>
+    
+  <%= yield %>
 
-<%= yield %>
+  <footer>
+    <p>© 2017 Wataru Inoue</p>
+  </footer>
 
 </body>
 </html>

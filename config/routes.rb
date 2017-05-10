@@ -5,5 +5,7 @@ Rails.application.routes.draw do
         post :confirm
     end
   end
+  
+  root 'top#index'
 
 end
